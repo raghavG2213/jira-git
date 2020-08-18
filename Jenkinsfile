@@ -4,8 +4,8 @@ pipeline {
     maven 'Maven'
   }
   environment {
-   registry = "raghavG2213/Spring"
-   registryCredential = "docker_1"
+   registry = "rgdocker2213/spring_test"
+   registryCredential = "4a20d5b1-f901-4d7e-a5f4-19ea550194fc"
   }
   stages {
     stage('Initialize'){
