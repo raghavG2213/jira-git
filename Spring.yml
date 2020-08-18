@@ -40,4 +40,4 @@ spec:
     app: springboot
   ports:
     - port: 8080
-  type: ClusterIP
+  type: LoadBalancer
