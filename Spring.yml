@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: raghavg-1626093
+  labels:
+    app: springboot
+spec:
+  replicas: 1
+  selector:
+       matchLabels:
+         app: springboot
+  template:
+    metadata:
+      name: springboot
+      labels:
+        app: springboot
+    spec:
+      containers:
+      - name: springboot
+        image: raghavgeek/testing:10
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "0.5"
+          requests:
+            memory: 256Mi
+            cpu: "0.25"
+  selector:
+    matchLabels:
+      app: springboot
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot
+spec:
+  selector:
+    app: springboot
+  ports:
+    - port: 8080
+  type: ClusterIP
