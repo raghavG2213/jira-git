@@ -48,10 +48,13 @@ stage('Building our image') {
              
              steps {
      
-                sh("curl -LO https://storage.googleapis.com/kubernetes-release/release/\$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl")
-                sh("chmod +x ./kubectl")
-                sh("cat ./Spring.yml | sed s/1.0.0/${BUILD_NUMBER}/g | ./kubectl apply -f -")
-                echo "Application started on port: HTTP_PORT (http)"
+                sshagent(['3d50f548-b381-41cf-8bb5-de5c16c9a866']) {
+                     scp StrictHostKeyChecking=no Spring.yml raghavg_1626093@13.93.120.161:/home/raghavg_1626093
+                       script{
+                       sh "ssh raghavg_1626093@13.93.120.161 kubectl apply -f ."
+                       
+                       }
+                }
              }    
      }   
   }
