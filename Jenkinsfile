@@ -79,23 +79,27 @@ stage('Building our image') {
   }
        
        post {
-   always {
-            echo 'I will always say Hello! again'
+   success {
+            echo 'I will always say Hello!'
               create_newjira_issue()
        }
+	failure {
+            echo 'I will always say Bye!'
+              create_newjira_issue()
+       }   
     
 }
        
   
 }
 
-def create_newjira_issue() {
+def newjira_success() {
     node {
   stage('JIRA') {
     def testIssue = [fields: [ // id or key must present for project.
                                project: [key: 'JIR'],
-                               summary: 'New JIRA Created from Jenkins.',
-                               description: 'New JIRA Created from Jenkins.',
+                               summary: 'New JIRA Build Success from Jenkins.',
+                               description: 'New JIRA Build Success from Jenkins.',
                                // id or name must present for issueType.
                                issuetype: [name: 'Task']]]
 
@@ -106,3 +110,24 @@ def create_newjira_issue() {
   }
 }
 }
+
+def newjira_failure() {
+    node {
+  stage('JIRA') {
+    def testIssue = [fields: [ // id or key must present for project.
+                               project: [key: 'JIR'],
+                               summary: 'New JIRA Build Failure from Jenkins.',
+                               description: 'New JIRA Build Failure from Jenkins.',
+                               // id or name must present for issueType.
+                               issuetype: [name: 'Task']]]
+
+    response = jiraNewIssue issue: testIssue, site: 'jira'
+
+    echo response.successful.toString()
+    echo response.data.toString()
+  }
+}
+}
+
+
+
