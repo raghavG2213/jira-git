@@ -60,12 +60,13 @@ stage('Building our image') {
              }    
      }   
   }
-}
-
-post {
+       
+       post {
      create_newjira_issue()
     
 }
+}
+
 
 void create_newjira_issue() {
     node {
