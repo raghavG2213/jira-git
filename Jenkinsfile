@@ -61,3 +61,25 @@ stage('Building our image') {
      }   
   }
 }
+
+post {
+     create_newjira_issue()
+    }
+}
+
+void create_newjira_issue() {
+    node {
+      stage('JIRA') {
+        def NewJiraIssue = [fields: [project: [key: 'JIR'],
+            summary: 'Maven Build',
+            description: 'Facing some issue in building Maven Code',
+            issuetype: [id: '3']]]
+
+
+    response = jiraNewIssue issue: NewJiraIssue, site: 'http://51.105.159.29:8080/'
+
+    echo response.successful.toString()
+    echo response.data.toString()
+    }
+  }
+}
