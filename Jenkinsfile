@@ -78,7 +78,7 @@ def create_newjira_issue() {
     node {
   stage('JIRA') {
     def testIssue = [fields: [ // id or key must present for project.
-                               project: [id: 'JIR'],
+                               project: [key: 'JIR'],
                                summary: 'New JIRA Created from Jenkins.',
                                description: 'New JIRA Created from Jenkins.',
                                // id or name must present for issueType.
