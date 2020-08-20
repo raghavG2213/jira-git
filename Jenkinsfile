@@ -83,9 +83,6 @@ def create_newjira_issue() {
             issuetype: [id: '3']]]
              echo 'I will always say Hello again 2!'
 
-    jiraNewIssue issue: NewJiraIssue, site: 'http://51.105.159.29:8080/secure/WelcomeToJIRA.jspa'
-    
-
     
     }
   }
