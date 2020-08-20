@@ -82,9 +82,10 @@ def create_newjira_issue() {
                                summary: 'New JIRA Created from Jenkins.',
                                description: 'New JIRA Created from Jenkins.',
                                // id or name must present for issueType.
-                               issuetype: [id: '3']]]
+                               //issuetype: [id: '3']
+                               ]]
 
-    response = jiraNewIssue issue: testIssue, site: 'http://51.105.159.29:8080/secure/WelcomeToJIRA.jspa'
+    response = jiraNewIssue issue: testIssue, site: 'jira'
 
     echo response.successful.toString()
     echo response.data.toString()
