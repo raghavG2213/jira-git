@@ -29,7 +29,7 @@ pipeline {
        
     stage('Initialize'){
       steps{
-        echo "We are doing some test"
+        echo "We are doing some tests"
         echo "PATH = ${PATH}"
         }
     }
