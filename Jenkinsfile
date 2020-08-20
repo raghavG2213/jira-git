@@ -43,7 +43,7 @@ stage('Building our image') {
              steps {
      
                 sshagent(['3d50f548-b381-41cf-8bb5-de5c16c9a866']) {
-                     scp -o Spring.yml raghavg_1626093@13.93.120.161:/home/raghavg_1626093
+                     scp Spring.yml raghavg_1626093@13.93.120.161:/home/raghavg_1626093
                        script{
                        sh "ssh raghavg_1626093@13.93.120.161 kubectl apply -f ."
                        
