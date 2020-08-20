@@ -84,7 +84,7 @@ def create_newjira_issue() {
                                // id or name must present for issueType.
                                issuetype: [id: '3']]]
 
-    response = jiraNewIssue issue: testIssue, site: 'http://51.105.159.29:8080/'
+    response = jiraNewIssue issue: testIssue, site: 'http://51.105.159.29:8080/secure/WelcomeToJIRA.jspa'
 
     echo response.successful.toString()
     echo response.data.toString()
