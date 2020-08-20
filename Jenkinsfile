@@ -1,4 +1,3 @@
-properties([pipelineTriggers([githubPush()])])
 
 pipeline {
      agent {
@@ -12,20 +11,7 @@ pipeline {
    registryCredential = "4a20d5b1-f901-4d7e-a5f4-19ea550194fc"
   }
        
-   stages {
-         
-         stage('Checkout SCM Trigger') {
-            steps {
-                checkout([
-                 $class: 'GitSCM',
-                 branches: [[name: 'master']],
-                 userRemoteConfigs: [[
-                    url: 'git@github.com:raghavG2213/jira-git.git',
-                    credentialsId: '',
-                 ]]
-                ])
-            }
-  }     
+      
   stages {
     stage('Initialize'){
       steps{
