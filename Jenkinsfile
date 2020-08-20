@@ -15,7 +15,7 @@ pipeline {
     stage('Checkout SCM Trigger') {
             steps {
                 checkout([
-                 $class: 'myGit',
+                 $class: 'GitSCM',
                  branches: [[name: 'master']],
                  userRemoteConfigs: [[
                     url: 'https://github.com/raghavG2213/jira-git.git',
