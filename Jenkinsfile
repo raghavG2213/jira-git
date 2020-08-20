@@ -68,10 +68,8 @@ stage('Building our image') {
        }
     
 }
-}
-
-
-void create_newjira_issue() {
+       
+  void create_newjira_issue() {
     node {
       stage('JIRA') {
         def NewJiraIssue = [fields: [project: [key: 'JIR'],
@@ -87,3 +85,7 @@ void create_newjira_issue() {
     }
   }
 }
+}
+
+
+
