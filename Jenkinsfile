@@ -64,8 +64,7 @@ stage('Building our image') {
        post {
    always {
             echo 'I will always say Hello again!'
-     //create_newjira_issue()
-          jiraSendBuildInfo site: 'jira'
+              create_newjira_issue()
           echo 'I will always say Hello again 3! '
        }
     
@@ -74,7 +73,7 @@ stage('Building our image') {
   
 }
 
-/*def create_newjira_issue() {
+def create_newjira_issue() {
        echo 'I will always say Hello again 1!'
     node {
   stage('JIRA') {
@@ -83,7 +82,7 @@ stage('Building our image') {
                                summary: 'New JIRA Created from Jenkins.',
                                description: 'New JIRA Created from Jenkins.',
                                // id or name must present for issueType.
-                               issuetype: [id: '3']]]
+                               issuetype: [name: 'Task']]]
 
     response = jiraNewIssue issue: testIssue, site: 'jira'
 
@@ -91,5 +90,4 @@ stage('Building our image') {
     echo response.data.toString()
   }
 }
-}*/
-
+}
