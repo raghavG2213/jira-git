@@ -14,7 +14,7 @@ pipeline {
        
    stages {
          
-         stage('Checkout SCM') {
+         stage('Checkout SCM Trigger') {
             steps {
                 checkout([
                  $class: 'myGit',
