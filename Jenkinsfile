@@ -84,7 +84,7 @@ def create_newjira_issue() {
              echo 'I will always say Hello again 2!'
 
 
-    response = jiraNewIssue issue: NewJiraIssue, site: 'http://51.105.159.29:8080/'
+    
 
     echo response.successful.toString()
     echo response.data.toString()
