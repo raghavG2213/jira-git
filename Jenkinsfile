@@ -2,7 +2,7 @@ properties([pipelineTriggers([githubPush()])])
 
 pipeline {
      agent {
-        label 'git-webhook'
+        label 'github-ci'
     }
   tools {
     maven 'Maven'
@@ -17,11 +17,11 @@ pipeline {
          stage('Checkout SCM Trigger') {
             steps {
                 checkout([
-                 $class: 'myGit',
+                 $class: 'GitSCM',
                  branches: [[name: 'master']],
                  userRemoteConfigs: [[
                     url: 'git@github.com:raghavG2213/jira-git.git',
-                    credentialsId: 'gitHub',
+                    credentialsId: '',
                  ]]
                 ])
             }
