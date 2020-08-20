@@ -81,11 +81,11 @@ stage('Building our image') {
        post {
    success {
             echo 'I will always say Hello!'
-              newjira_successs()
+              newjira_success()
        }
 	failure {
             echo 'I will always say Bye!'
-              newjira_failures()
+              newjira_failure()
        }   
     
 }
@@ -101,7 +101,7 @@ def newjira_success() {
                                summary: 'New JIRA Build Success from Jenkins.',
                                description: 'New JIRA Build Success from Jenkins.',
                                // id or name must present for issueType.
-                               issuetype: [name: 'Task']]]
+                               issuetype: [name: 'Story']]]
 
     response = jiraNewIssue issue: testIssue, site: 'jira'
 
