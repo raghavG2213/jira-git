@@ -82,7 +82,7 @@ stage('Building our image') {
        
        post {
    always {
-            echo 'I will always say Hello again!'
+            echo 'I will always say Hello again'
               create_newjira_issue()
        }
     
