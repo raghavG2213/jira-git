@@ -81,7 +81,7 @@ void create_newjira_issue() {
             issuetype: [id: '3']]]
 
 
-    response = jiraNewIssue issue: NewJiraIssue, site: 'http://51.105.159.29:8080/'
+    response = 'jiraNewIssue' issue: NewJiraIssue, site: 'http://51.105.159.29:8080/'
 
     echo response.successful.toString()
     echo response.data.toString()
