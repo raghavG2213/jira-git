@@ -42,12 +42,9 @@ stage('Building our image') {
              
              steps {
      
-                sshagent(['3d50f548-b381-41cf-8bb5-de5c16c9a866']) {
-                     scp Spring.yml raghavg_1626093@13.93.120.161:/home/raghavg_1626093
-                       script{
-                       sh "ssh raghavg_1626093@13.93.120.161 kubectl apply -f ."
-                       
-                       }
+                sshagent(['raghavg_1626093']) {
+                     
+                       sh 'ssh -o StrictHostKeyChecking=no raghavg_1626093@13.93.120.161 kubectl apply -f Spring.yml -n docker-1626093'
                 }
              }    
      }   
