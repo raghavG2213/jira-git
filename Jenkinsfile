@@ -81,11 +81,11 @@ stage('Building our image') {
        post {
    success {
             echo 'I will always say Hello!'
-              newjira_success()
+              newjira_successs()
        }
 	failure {
             echo 'I will always say Bye!'
-              newjira_failures()
+              newjira_failure()
        }   
     
 }
