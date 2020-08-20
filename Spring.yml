@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: raghavg-1626093
+  name: raghavSSH-1626093
   labels:
-    app: springboot
+    app: springbootSSH
 spec:
   replicas: 1
   selector:
        matchLabels:
-         app: springboot
+         app: springbootSSH
   template:
     metadata:
-      name: springboot
+      name: springbootSSH
       labels:
-        app: springboot
+        app: springbootSSH
     spec:
       containers:
-      - name: springboot
+      - name: springbootSSH
         image: rgdocker2213/spring_test
         resources:
           limits:
@@ -27,17 +27,17 @@ spec:
             cpu: "0.25"
   selector:
     matchLabels:
-      app: springboot
+      app: springbootSSH
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: springboot
+  name: springbootSSH
 spec:
   selector:
-    app: springboot
+    app: springbootSSH
   ports:
     - port: 8080
   type: LoadBalancer
