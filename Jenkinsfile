@@ -1,5 +1,9 @@
+properties([pipelineTriggers([githubPush()])])
+
 pipeline {
-       agent any
+     agent {
+        label 'git-webhook'
+    }
   tools {
     maven 'Maven'
   }
@@ -7,6 +11,21 @@ pipeline {
    registry = "rgdocker2213/spring_test"
    registryCredential = "4a20d5b1-f901-4d7e-a5f4-19ea550194fc"
   }
+       
+   stages {
+         
+         stage('Checkout SCM') {
+            steps {
+                checkout([
+                 $class: 'myGit',
+                 branches: [[name: 'master']],
+                 userRemoteConfigs: [[
+                    url: 'git@github.com:raghavG2213/jira-git.git',
+                    credentialsId: '',
+                 ]]
+                ])
+            }
+  }     
   stages {
     stage('Initialize'){
       steps{
