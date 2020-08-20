@@ -65,6 +65,7 @@ stage('Building our image') {
    always {
             echo 'I will always say Hello again!'
      create_newjira_issue()
+          echo 'I will always say Hello again 3! '
        }
     
 }
@@ -73,12 +74,14 @@ stage('Building our image') {
 }
 
 def create_newjira_issue() {
+       echo 'I will always say Hello again 1!'
     node {
       stage('JIRA') {
         def NewJiraIssue = [fields: [project: [key: 'JIR'],
             summary: 'Maven Build',
             description: 'Facing some issue in building Maven Code',
             issuetype: [id: '3']]]
+             echo 'I will always say Hello again 2!'
 
 
     response = jiraNewIssue issue: NewJiraIssue, site: 'http://51.105.159.29:8080/'
