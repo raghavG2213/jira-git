@@ -84,7 +84,6 @@ stage('Building our image') {
    always {
             echo 'I will always say Hello again!'
               create_newjira_issue()
-          echo 'I will always say Hello again 3! '
        }
     
 }
@@ -93,7 +92,6 @@ stage('Building our image') {
 }
 
 def create_newjira_issue() {
-       echo 'I will always say Hello again 1!'
     node {
   stage('JIRA') {
     def testIssue = [fields: [ // id or key must present for project.
