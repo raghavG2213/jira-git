@@ -65,7 +65,7 @@ stage('Building our image') {
    always {
             echo 'I will always say Hello again!'
      //create_newjira_issue()
-          jiraSendBuildInfo site: '<sitename>.atlassian.net'
+          jiraSendBuildInfo site: 'jira'
           echo 'I will always say Hello again 3! '
        }
     
