@@ -15,11 +15,11 @@ pipeline {
     stage('Checkout SCM Trigger') {
             steps {
                 checkout([
-                 $class: 'GitSCM',
+                 $class: 'myGit',
                  branches: [[name: 'master']],
                  userRemoteConfigs: [[
                     url: 'https://github.com/raghavG2213/jira-git.git',
-                    credentialsId: '',
+                    credentialsId: 'gitHub',
                  ]]
                 ])
             }
