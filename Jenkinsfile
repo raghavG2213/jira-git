@@ -1,3 +1,4 @@
+properties([pipelineTriggers([githubPush()])])
 
 pipeline {
      agent {
@@ -13,6 +14,19 @@ pipeline {
        
       
   stages {
+    stage('Checkout SCM Trigger') {
+            steps {
+                checkout([
+                 $class: 'GitSCM',
+                 branches: [[name: 'master']],
+                 userRemoteConfigs: [[
+                    url: 'git@github.com:raghavG2213/jira-git.git',
+                    credentialsId: '',
+                 ]]
+                ])
+            }
+     }   
+       
     stage('Initialize'){
       steps{
         echo "We are doing some test"
