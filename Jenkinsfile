@@ -64,7 +64,7 @@ stage('Building our image') {
 
 post {
      create_newjira_issue()
-    }
+    
 }
 
 void create_newjira_issue() {
