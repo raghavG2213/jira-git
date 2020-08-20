@@ -85,7 +85,7 @@ stage('Building our image') {
        }
 	failure {
             echo 'I will always say Bye!'
-              newjira_failure()
+              newjira_failures()
        }   
     
 }
