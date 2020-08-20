@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: springboot
-        image: rgdocker2213/spring:v2
+        image: rgdocker2213/spring_test
         resources:
           limits:
             memory: 1Gi
