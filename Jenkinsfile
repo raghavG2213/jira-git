@@ -1,9 +1,7 @@
 properties([pipelineTriggers([githubPush()])])
 
 pipeline {
-     agent {
-        label 'github-ci'
-    }
+     agent any
   tools {
     maven 'Maven'
   }
