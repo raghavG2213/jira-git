@@ -25,7 +25,7 @@ pipeline {
             }
      }   
        
-    stage('Initializing the pipeline'){
+    stage('Initialize'){
       steps{
         echo "We are doing some tests"
         echo "PATH = ${PATH}"
@@ -38,7 +38,7 @@ pipeline {
     }     
     }
       
-stage('Building the image') { 
+stage('Image Build') { 
              steps { 
                     script {
                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -46,7 +46,7 @@ stage('Building the image') {
                  } 
 
      }
-      stage('Deploying the image') { 
+      stage('Docker Image Deploy') { 
           steps { 
                  script { 
                   docker.withRegistry( '', registryCredential ) { 
@@ -55,7 +55,7 @@ stage('Building the image') {
                    } 
           }
       }
-      stage('Deploying Application on K8s') {
+      stage('Application Deploy on K8s') {
              
              steps {
      
@@ -80,13 +80,13 @@ stage('Building the image') {
        
        post {
    success {
-            echo 'Hello! This was a success.'
+            echo 'Hello! This was a success!'
               newjira_success()
        }
 	failure {
-            echo 'Hello! There was a failure.'
+            echo 'Hello! There was a failure!'
               newjira_failure()
-       }   
+       }
     
 }
        
@@ -96,11 +96,9 @@ stage('Building the image') {
 def newjira_success() {
     node {
   stage('JIRA') {
-    def testIssue = [fields: [ // id or key must present for project.
-                               project: [key: 'JIR'],
+    def testIssue = [fields: [ project: [key: 'JIR'],
                                summary: 'New JIRA Build Success from Jenkins.',
                                description: 'New JIRA Build Success from Jenkins.',
-                               // id or name must present for issueType.
                                issuetype: [name: 'Story']]]
 
     response = jiraNewIssue issue: testIssue, site: 'jira'
@@ -114,11 +112,9 @@ def newjira_success() {
 def newjira_failure() {
     node {
   stage('JIRA') {
-    def testIssue = [fields: [ // id or key must present for project.
-                               project: [key: 'JIR'],
+    def testIssue = [fields: [ project: [key: 'JIR'],
                                summary: 'New JIRA Build Failure from Jenkins.',
                                description: 'New JIRA Build Failure from Jenkins.',
-                               // id or name must present for issueType.
                                issuetype: [name: 'Task']]]
 
     response = jiraNewIssue issue: testIssue, site: 'jira'
