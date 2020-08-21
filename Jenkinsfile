@@ -12,7 +12,7 @@ pipeline {
        
       
   stages {
-    stage('Checkout SCM Trigger') {
+    stage('Pipeline Trigger') {
             steps {
                 checkout([
                  $class: 'GitSCM',
@@ -25,7 +25,7 @@ pipeline {
             }
      }   
        
-    stage('Initialize'){
+    stage('Initializing the pipeline'){
       steps{
         echo "We are doing some tests"
         echo "PATH = ${PATH}"
@@ -38,7 +38,7 @@ pipeline {
     }     
     }
       
-stage('Building our image') { 
+stage('Building the image') { 
              steps { 
                     script {
                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -46,7 +46,7 @@ stage('Building our image') {
                  } 
 
      }
-      stage('Deploy our image') { 
+      stage('Deploying the image') { 
           steps { 
                  script { 
                   docker.withRegistry( '', registryCredential ) { 
@@ -55,7 +55,7 @@ stage('Building our image') {
                    } 
           }
       }
-      stage('Deploy Application on K8s') {
+      stage('Deploying Application on K8s') {
              
              steps {
      
@@ -80,11 +80,11 @@ stage('Building our image') {
        
        post {
    success {
-            echo 'I will always say Hello!'
+            echo 'Hello! This was a success.'
               newjira_success()
        }
 	failure {
-            echo 'I will always say Bye!'
+            echo 'Hello! There was a failure.'
               newjira_failure()
        }   
     
